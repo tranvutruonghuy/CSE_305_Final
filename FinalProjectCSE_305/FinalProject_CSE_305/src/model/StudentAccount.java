@@ -1,3 +1,4 @@
+package src.model;
 
 public class StudentAccount {
     private String name;
