@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "d:\\Dowload\\Zip File\\jar_files\\AbsoluteLayout-RELEASE210.jar"
+    ]
+}
