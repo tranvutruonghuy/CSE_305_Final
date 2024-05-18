@@ -1,17 +1,16 @@
 package src.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class Bus {
     private int busNumber;
-    private List<Bus> adjacentBusStop;
-    private HashMap<Integer, String[]> departureTimeOfEachRoute;
+    private List<Bus> adjacentBusStop = new ArrayList<>();
+    private HashMap<Integer, String[]> departureTimeOfEachRoute = new HashMap<>();
 
-    public Bus(int busNumber, List<Bus> adjacentBusStop, HashMap<Integer, String[]> departureTimeOfEachRoute) {
+    public Bus(int busNumber) {
         this.busNumber = busNumber;
-        this.adjacentBusStop = adjacentBusStop;
-        this.departureTimeOfEachRoute = departureTimeOfEachRoute;
     }
 
     public int getBusNumber() {
