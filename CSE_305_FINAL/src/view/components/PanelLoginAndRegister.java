@@ -31,8 +31,8 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
     }
 
     private void images() {
-        userLabel.setIcon(scaleImage("src/view/images/user.png"));
-        showPassLabel.setIcon(scaleImage("src/view/images/show.png"));
+        userLabel.setIcon(scaleImage("CSE_305_FINAL/src/view/images/user.png"));
+        showPassLabel.setIcon(scaleImage("CSE_305_FINAL/src/view/images/show.png"));
     }
 
     /**
@@ -92,6 +92,8 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         passwordLB1.setForeground(new java.awt.Color(0, 102, 102));
         passwordLB1.setText("Password");
         login.add(passwordLB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+
+        passwordField1.setEchoChar('\u25cf');
         login.add(passwordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 330, 30));
 
         signInButton.setBackground(new java.awt.Color(0, 102, 102));
@@ -191,13 +193,13 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
     private void showPassLabelMousePressed(java.awt.event.MouseEvent evt) {                                           
         if (!check) {
                         passwordField1.setEchoChar((char) 0);
-                        showPassLabel.setIcon(scaleImage("src/view/images/hide.png"));
+                        showPassLabel.setIcon(scaleImage("CSE_305_FINAL/src/view/images/hide.png"));
                         check = true;
                         
                 } else {
                         check = false;
                         passwordField1.setEchoChar('\u25cf');
-                        showPassLabel.setIcon(scaleImage("src/view/images/show.png"));
+                        showPassLabel.setIcon(scaleImage("CSE_305_FINAL/src/view/images/show.png"));
                 }
     }                                          
 
