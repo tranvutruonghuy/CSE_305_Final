@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package main;
 
 
@@ -15,7 +12,6 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 import components.PanelCover;
 import components.PanelLoginAndRegister;
-
 
 /**
  *
@@ -49,6 +45,8 @@ public class Main extends javax.swing.JFrame {
         bg = new javax.swing.JLayeredPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("BUS SERVICE");
+        setResizable(false);
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setDoubleBuffered(true);
