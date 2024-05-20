@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
+import javax.swing.ImageIcon;
 
 public class PanelCover extends javax.swing.JPanel {
 
@@ -18,6 +20,7 @@ public class PanelCover extends javax.swing.JPanel {
     public PanelCover() {
         initComponents();
         setOpaque(false);
+        
     }
 
     /**
@@ -33,6 +36,7 @@ public class PanelCover extends javax.swing.JPanel {
         oneLabel = new javax.swing.JLabel();
         twoLabel = new javax.swing.JLabel();
         threeLabel = new javax.swing.JLabel();
+        oneLabel1 = new javax.swing.JLabel();
 
         setForeground(new java.awt.Color(0, 102, 102));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -45,26 +49,33 @@ public class PanelCover extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
 
         oneLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         oneLabel.setForeground(new java.awt.Color(255, 255, 255));
-        oneLabel.setText("Welcome Back!");
-        add(oneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 300, -1));
+        oneLabel.setText("Welcome Back");
+        add(oneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 300, 50));
 
+        twoLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         twoLabel.setForeground(new java.awt.Color(255, 255, 255));
-        twoLabel.setText("To keep connected with us please");
-        add(twoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 190, 20));
+        twoLabel.setText("To keep connected with us ");
+        add(twoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 200, 20));
 
+        threeLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         threeLabel.setForeground(new java.awt.Color(255, 255, 255));
-        threeLabel.setText("login with your personal info");
-        add(threeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
+        threeLabel.setText("please login with your personal info");
+        add(threeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 260, -1));
+
+        oneLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        oneLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        oneLabel1.setText("to BUS SERVICE");
+        add(oneLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 300, 50));
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         event.actionPerformed(evt);
     }                                        
-
+    
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
@@ -104,15 +115,18 @@ public class PanelCover extends javax.swing.JPanel {
     public void login(boolean login) {
         if (this.isLogin != login) {
             if (login) {
-                oneLabel.setText("hello, Friend!");
-                twoLabel.setText("Enter your personal details");
-                threeLabel.setText("and start journey with us");
+                oneLabel.setText("Hi there!");
+                oneLabel1.setText("Keep going on by");
 
+                twoLabel.setText("Enter your personal details");
+                threeLabel.setText("and start your journey with us");
+                jButton1.setText("SIGN UP");
             } else {
                 oneLabel.setText("Welcome Back!");
-                twoLabel.setText("To keep connected with us please");
-                threeLabel.setText("login with your personal info");
-
+                oneLabel1.setText("to BUS SERVICE");
+                twoLabel.setText("To keep connected with us ");
+                threeLabel.setText("please login with your personal info");
+                jButton1.setText("SIGN IN");
             }
             this.isLogin = login;
         }
@@ -122,6 +136,7 @@ public class PanelCover extends javax.swing.JPanel {
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel oneLabel;
+    private javax.swing.JLabel oneLabel1;
     private javax.swing.JLabel threeLabel;
     private javax.swing.JLabel twoLabel;
     // End of variables declaration                   

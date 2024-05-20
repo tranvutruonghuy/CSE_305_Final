@@ -81,6 +81,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         usernameLabel1.setText("User Name");
         login.add(usernameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
+        userNameAccount1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         userNameAccount1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userNameAccount1ActionPerformed(evt);
@@ -93,6 +94,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         passwordLB1.setText("Password");
         login.add(passwordLB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
 
+        passwordField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         passwordField1.setEchoChar('\u25cf');
         login.add(passwordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 330, 30));
 
