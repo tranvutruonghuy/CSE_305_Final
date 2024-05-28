@@ -1,4 +1,4 @@
-package view.component;
+package components;
 
 import java.awt.Color;
 import java.awt.GradientPaint;

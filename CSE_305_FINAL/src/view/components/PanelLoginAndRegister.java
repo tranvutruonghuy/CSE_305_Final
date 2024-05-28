@@ -1,4 +1,4 @@
-package view.component;
+package components;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
