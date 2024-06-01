@@ -10,6 +10,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import javax.swing.ImageIcon;
+import view.swing.Button1;
 
 public class PanelCover extends javax.swing.JPanel {
 
@@ -36,7 +37,7 @@ public class PanelCover extends javax.swing.JPanel {
         twoLabel = new javax.swing.JLabel();
         threeLabel = new javax.swing.JLabel();
         oneLabel1 = new javax.swing.JLabel();
-        changePanelButton = new view.swing.Button();
+        changePanelButton = new view.swing.Button1();
 
         setForeground(new java.awt.Color(0, 102, 102));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -134,7 +135,7 @@ public class PanelCover extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private view.swing.Button changePanelButton;
+    private view.swing.Button1 changePanelButton;
     private javax.swing.JLabel oneLabel;
     private javax.swing.JLabel oneLabel1;
     private javax.swing.JLabel threeLabel;

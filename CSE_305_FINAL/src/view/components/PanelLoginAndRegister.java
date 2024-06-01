@@ -58,7 +58,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         fogotLabel = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
         showPassLabel = new javax.swing.JLabel();
-        signInButton1 = new view.swing.Button();
+        signInButton1 = new view.swing.Button1();
         userNameAccountLoginTF = new view.swing.MyTextField();
         passwordLoginTF = new view.swing.MyPasswordField();
         register = new javax.swing.JPanel();
@@ -69,7 +69,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         nameAccountTF = new view.swing.MyTextField();
         userNameAccount = new view.swing.MyTextField();
         passwordField = new view.swing.MyPasswordField();
-        signUpButton = new view.swing.Button();
+        signUpButton = new view.swing.Button1();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -197,7 +197,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
     private void signInButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInButton1ActionPerformed
         String userName = userNameAccountLoginTF.getText();
         String password = passwordLoginTF.getText();
-        ArrayList<StudentAccount> list = StudentAccountDAO.restoreListFromFile("src/account.txt");
+        ArrayList<StudentAccount> list = (ArrayList<StudentAccount>) StudentAccountDAO.restoreListFromFile("src/account.txt");
         if (userName.length() == 0 || password.length() == 0) {
             JOptionPane.showMessageDialog(nameAccountTF, "Please enter your account information"
             );
@@ -228,7 +228,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
             return;
         }
         
-        ArrayList<StudentAccount> list = StudentAccountDAO.restoreListFromFile("src/account.txt");
+        ArrayList<StudentAccount> list = (ArrayList<StudentAccount>) StudentAccountDAO.restoreListFromFile("src/account.txt");
         for (StudentAccount e : list) {
             if (e.getName().equals(name)) {
                 JOptionPane.showMessageDialog(nameAccountTF, "Your username has already exist!");
@@ -258,8 +258,8 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
     private view.swing.MyPasswordField passwordLoginTF;
     private javax.swing.JPanel register;
     private javax.swing.JLabel showPassLabel;
-    private view.swing.Button signInButton1;
-    private view.swing.Button signUpButton;
+    private view.swing.Button1 signInButton1;
+    private view.swing.Button1 signUpButton;
     private javax.swing.JLabel userLabel;
     private view.swing.MyTextField userNameAccount;
     private view.swing.MyTextField userNameAccountLoginTF;
