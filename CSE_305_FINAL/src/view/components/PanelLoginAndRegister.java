@@ -1,7 +1,12 @@
-package components;
+package view.components;
 
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import model.StudentAccount;
+import utils.StudentAccountDAO;
 
 public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
@@ -10,6 +15,8 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         login.setVisible(false);
         register.setVisible(true);
         images();
+        userNameAccountLoginTF.setHint("Username");
+        passwordLoginTF.setHint("Password");
     }
 
     private ImageIcon scaleImage(String path) {
@@ -47,22 +54,22 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         login = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         usernameLabel1 = new javax.swing.JLabel();
-        userNameAccount1 = new javax.swing.JTextField();
         passwordLB1 = new javax.swing.JLabel();
-        passwordField1 = new javax.swing.JPasswordField();
-        signInButton = new javax.swing.JButton();
         fogotLabel = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
         showPassLabel = new javax.swing.JLabel();
+        signInButton1 = new view.swing.Button();
+        userNameAccountLoginTF = new view.swing.MyTextField();
+        passwordLoginTF = new view.swing.MyPasswordField();
         register = new javax.swing.JPanel();
-        userNameAccount = new javax.swing.JTextField();
         createAccLabel = new javax.swing.JLabel();
         usernameLabel = new javax.swing.JLabel();
-        nameAccount1 = new javax.swing.JTextField();
         nameLabel = new javax.swing.JLabel();
         passwordLB = new javax.swing.JLabel();
-        passwordField = new javax.swing.JPasswordField();
-        signUpButton = new javax.swing.JButton();
+        nameAccountTF = new view.swing.MyTextField();
+        userNameAccount = new view.swing.MyTextField();
+        passwordField = new view.swing.MyPasswordField();
+        signUpButton = new view.swing.Button();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -81,33 +88,10 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         usernameLabel1.setText("User Name");
         login.add(usernameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
-        userNameAccount1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        userNameAccount1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameAccount1ActionPerformed(evt);
-            }
-        });
-        login.add(userNameAccount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 330, 30));
-
         passwordLB1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         passwordLB1.setForeground(new java.awt.Color(0, 102, 102));
         passwordLB1.setText("Password");
         login.add(passwordLB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
-
-        passwordField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        passwordField1.setEchoChar('\u25cf');
-        login.add(passwordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 330, 30));
-
-        signInButton.setBackground(new java.awt.Color(0, 102, 0));
-        signInButton.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
-        signInButton.setForeground(new java.awt.Color(255, 255, 255));
-        signInButton.setText("SIGN IN");
-        signInButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signInButtonActionPerformed(evt);
-            }
-        });
-        login.add(signInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 120, 50));
 
         fogotLabel.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         fogotLabel.setText("Forgot your password?");
@@ -124,6 +108,28 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         });
         login.add(showPassLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 40, 30));
 
+        signInButton1.setBackground(new java.awt.Color(0, 102, 0));
+        signInButton1.setForeground(new java.awt.Color(255, 255, 255));
+        signInButton1.setText("SIGN IN");
+        signInButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        signInButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signInButton1ActionPerformed(evt);
+            }
+        });
+        login.add(signInButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 150, 50));
+
+        userNameAccountLoginTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNameAccountLoginTFActionPerformed(evt);
+            }
+        });
+        login.add(userNameAccountLoginTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 330, 40));
+
+        passwordLoginTF.setToolTipText("");
+        passwordLoginTF.setEchoChar('\u25cf');
+        login.add(passwordLoginTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 330, -1));
+
         add(login, "card3");
 
         register.setBackground(new java.awt.Color(255, 255, 255));
@@ -131,29 +137,15 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         register.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         register.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        userNameAccount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameAccountActionPerformed(evt);
-            }
-        });
-        register.add(userNameAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 290, 30));
-
-        createAccLabel.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
-        createAccLabel.setForeground(new java.awt.Color(0, 102, 0));
+        createAccLabel.setFont(new java.awt.Font("Segoe UI Black", 1, 32)); // NOI18N
+        createAccLabel.setForeground(new java.awt.Color(0, 102, 102));
         createAccLabel.setText("Create Account");
-        register.add(createAccLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 230, 58));
+        register.add(createAccLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 270, 58));
 
         usernameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         usernameLabel.setForeground(new java.awt.Color(0, 102, 102));
         usernameLabel.setText("User Name");
         register.add(usernameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
-
-        nameAccount1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameAccount1ActionPerformed(evt);
-            }
-        });
-        register.add(nameAccount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 290, 30));
 
         nameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         nameLabel.setForeground(new java.awt.Color(0, 102, 102));
@@ -164,46 +156,93 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         passwordLB.setForeground(new java.awt.Color(0, 102, 102));
         passwordLB.setText("Password");
         register.add(passwordLB, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
-        register.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 290, 30));
+
+        nameAccountTF.setHint("Name");
+        register.add(nameAccountTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 290, -1));
+
+        userNameAccount.setHint("Username");
+        register.add(userNameAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 290, -1));
+
+        passwordField.setHint("Password");
+        passwordField.setEchoChar('\u25cf');
+        register.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 290, -1));
 
         signUpButton.setBackground(new java.awt.Color(0, 102, 102));
-        signUpButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         signUpButton.setForeground(new java.awt.Color(255, 255, 255));
         signUpButton.setText("SIGN UP");
-        signUpButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 0, 5, 0));
-        register.add(signUpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 140, 40));
+        signUpButton.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        signUpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signUpButtonActionPerformed(evt);
+            }
+        });
+        register.add(signUpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 140, 50));
 
         add(register, "card2");
     }// </editor-fold>//GEN-END:initComponents
-
-    private void userNameAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameAccountActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNameAccountActionPerformed
-
-    private void nameAccount1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameAccount1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameAccount1ActionPerformed
-
-    private void userNameAccount1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameAccount1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNameAccount1ActionPerformed
-
-    private void signInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInButtonActionPerformed
-        
-    }//GEN-LAST:event_signInButtonActionPerformed
     private boolean check = false;
     private void showPassLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showPassLabelMousePressed
         if (!check) {
-                        passwordField1.setEchoChar((char) 0);
-                        showPassLabel.setIcon(scaleImage("src/view/images/hide.png"));
-                        check = true;
-                        
-                } else {
-                        check = false;
-                        passwordField1.setEchoChar('\u25cf');
-                        showPassLabel.setIcon(scaleImage("src/view/images/show.png"));
-                }
+            passwordLoginTF.setEchoChar((char) 0);
+            showPassLabel.setIcon(scaleImage("src/view/images/hide.png"));
+            check = true;
+
+        } else {
+            check = false;
+            passwordLoginTF.setEchoChar('\u25cf');
+            showPassLabel.setIcon(scaleImage("src/view/images/show.png"));
+        }
     }//GEN-LAST:event_showPassLabelMousePressed
+
+    private void signInButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInButton1ActionPerformed
+        String userName = userNameAccountLoginTF.getText();
+        String password = passwordLoginTF.getText();
+        ArrayList<StudentAccount> list = StudentAccountDAO.restoreListFromFile("src/account.txt");
+        if (userName.length() == 0 || password.length() == 0) {
+            JOptionPane.showMessageDialog(nameAccountTF, "Please enter your account information"
+            );
+            return;
+        }
+        for (StudentAccount e : list) {
+            if (e.getName().equals(userName)) {
+                if (e.getPassword().equals(password)) {
+                    JOptionPane.showMessageDialog(nameAccountTF, "OK");
+                    return;
+                }
+            }
+
+        }
+        JOptionPane.showMessageDialog(nameAccountTF, "Username or password is incorrect");
+    }//GEN-LAST:event_signInButton1ActionPerformed
+
+    private void userNameAccountLoginTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameAccountLoginTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userNameAccountLoginTFActionPerformed
+
+    private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
+        String name = nameAccountTF.getText();
+        String username = userNameAccount.getText();
+        String password = passwordField.getText();
+        if (name.length() == 0 || username.length() == 0 || password.length() == 0){
+            JOptionPane.showMessageDialog(nameAccountTF, "Please enter full information!");
+            return;
+        }
+        
+        ArrayList<StudentAccount> list = StudentAccountDAO.restoreListFromFile("src/account.txt");
+        for (StudentAccount e : list) {
+            if (e.getName().equals(name)) {
+                JOptionPane.showMessageDialog(nameAccountTF, "Your username has already exist!");
+                userNameAccount.setText("");
+                return;
+            }
+        }
+        StudentAccount newAccount = new StudentAccount(name, username, password);
+        StudentAccountDAO.saveAccountAsChar(newAccount, "src/account.txt");
+        JOptionPane.showMessageDialog(nameAccountTF, "Register successfully!");
+        nameAccountTF.setText("");
+        userNameAccount.setText("");
+        passwordField.setText("");
+    }//GEN-LAST:event_signUpButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -211,19 +250,19 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
     private javax.swing.JLabel fogotLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel login;
-    private javax.swing.JTextField nameAccount1;
+    private view.swing.MyTextField nameAccountTF;
     private javax.swing.JLabel nameLabel;
-    private javax.swing.JPasswordField passwordField;
-    private javax.swing.JPasswordField passwordField1;
+    private view.swing.MyPasswordField passwordField;
     private javax.swing.JLabel passwordLB;
     private javax.swing.JLabel passwordLB1;
+    private view.swing.MyPasswordField passwordLoginTF;
     private javax.swing.JPanel register;
     private javax.swing.JLabel showPassLabel;
-    private javax.swing.JButton signInButton;
-    private javax.swing.JButton signUpButton;
+    private view.swing.Button signInButton1;
+    private view.swing.Button signUpButton;
     private javax.swing.JLabel userLabel;
-    private javax.swing.JTextField userNameAccount;
-    private javax.swing.JTextField userNameAccount1;
+    private view.swing.MyTextField userNameAccount;
+    private view.swing.MyTextField userNameAccountLoginTF;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JLabel usernameLabel1;
     // End of variables declaration//GEN-END:variables

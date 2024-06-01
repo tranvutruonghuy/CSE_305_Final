@@ -1,5 +1,5 @@
 
-package main;
+package view.main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,8 +9,9 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-import components.PanelCover;
-import components.PanelLoginAndRegister;
+import view.components.PanelCover;
+import view.components.PanelLoginAndRegister;
+
 
 /**
  *
@@ -30,6 +31,7 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         init();
+        
     }
 
     /**

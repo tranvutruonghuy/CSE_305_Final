@@ -1,4 +1,4 @@
-package components;
+package view.components;
 
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -32,29 +32,18 @@ public class PanelCover extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         oneLabel = new javax.swing.JLabel();
         twoLabel = new javax.swing.JLabel();
         threeLabel = new javax.swing.JLabel();
         oneLabel1 = new javax.swing.JLabel();
+        changePanelButton = new view.swing.Button();
 
         setForeground(new java.awt.Color(0, 102, 102));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("SIGN IN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
-
         oneLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         oneLabel.setForeground(new java.awt.Color(255, 255, 255));
-        oneLabel.setText("Welcome Back");
+        oneLabel.setText("Welcome Back!");
         add(oneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 300, 50));
 
         twoLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -71,16 +60,26 @@ public class PanelCover extends javax.swing.JPanel {
         oneLabel1.setForeground(new java.awt.Color(255, 255, 255));
         oneLabel1.setText("to BUS SERVICE");
         add(oneLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 300, 50));
+
+        changePanelButton.setForeground(new java.awt.Color(0, 102, 102));
+        changePanelButton.setText("SIGN IN");
+        changePanelButton.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        changePanelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePanelButtonActionPerformed(evt);
+            }
+        });
+        add(changePanelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 120, 40));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void changePanelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePanelButtonActionPerformed
         event.actionPerformed(evt);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_changePanelButtonActionPerformed
     
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        GradientPaint gra = new GradientPaint(0, 0, Color.decode("#000000"), 0, getHeight(), Color.decode("#0f9b0f"));
+        GradientPaint gra = new GradientPaint(0, 0, Color.decode("#237A57"), 0, getHeight(), Color.decode("#093028"));
         g2.setPaint(gra);
         g2.fillRect(0, 0, getWidth(), getHeight());
         super.paintComponent(g);
@@ -121,13 +120,13 @@ public class PanelCover extends javax.swing.JPanel {
 
                 twoLabel.setText("Enter your personal details");
                 threeLabel.setText("and start your journey with us");
-                jButton1.setText("SIGN UP");
+                changePanelButton.setText("SIGN UP");
             } else {
                 oneLabel.setText("Welcome Back!");
                 oneLabel1.setText("to BUS SERVICE");
                 twoLabel.setText("To keep connected with us ");
                 threeLabel.setText("please login with your personal info");
-                jButton1.setText("SIGN IN");
+                changePanelButton.setText("SIGN IN");
             }
             this.isLogin = login;
         }
@@ -135,7 +134,7 @@ public class PanelCover extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private view.swing.Button changePanelButton;
     private javax.swing.JLabel oneLabel;
     private javax.swing.JLabel oneLabel1;
     private javax.swing.JLabel threeLabel;
