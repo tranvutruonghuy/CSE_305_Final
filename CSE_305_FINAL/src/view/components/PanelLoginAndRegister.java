@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.StudentAccount;
 import utils.StudentAccountDAO;
+import view.main.Main;
+import view.main.Main2;
 
 public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
@@ -58,7 +60,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         fogotLabel = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
         showPassLabel = new javax.swing.JLabel();
-        signInButton1 = new view.swing.Button1();
+        signInButton1 = new view.swing.Button();
         userNameAccountLoginTF = new view.swing.MyTextField();
         passwordLoginTF = new view.swing.MyPasswordField();
         register = new javax.swing.JPanel();
@@ -69,7 +71,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         nameAccountTF = new view.swing.MyTextField();
         userNameAccount = new view.swing.MyTextField();
         passwordField = new view.swing.MyPasswordField();
-        signUpButton = new view.swing.Button1();
+        signUpButton = new view.swing.Button();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -79,7 +81,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
         jLabel1.setText("Sign in");
         login.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 140, 60));
 
@@ -108,7 +110,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         });
         login.add(showPassLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 40, 30));
 
-        signInButton1.setBackground(new java.awt.Color(0, 102, 0));
+        signInButton1.setBackground(new java.awt.Color(0, 102, 102));
         signInButton1.setForeground(new java.awt.Color(255, 255, 255));
         signInButton1.setText("SIGN IN");
         signInButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -117,7 +119,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
                 signInButton1ActionPerformed(evt);
             }
         });
-        login.add(signInButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 150, 50));
+        login.add(signInButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 150, 50));
 
         userNameAccountLoginTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,16 +199,23 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
     private void signInButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInButton1ActionPerformed
         String userName = userNameAccountLoginTF.getText();
         String password = passwordLoginTF.getText();
-        ArrayList<StudentAccount> list = (ArrayList<StudentAccount>) StudentAccountDAO.restoreListFromFile("src/account.txt");
+        ArrayList<StudentAccount> list = StudentAccountDAO.restoreListFromFile("src/account.txt");
         if (userName.length() == 0 || password.length() == 0) {
             JOptionPane.showMessageDialog(nameAccountTF, "Please enter your account information"
             );
             return;
         }
         for (StudentAccount e : list) {
-            if (e.getName().equals(userName)) {
+            if (e.getUsername().equals(userName)) {
                 if (e.getPassword().equals(password)) {
-                    JOptionPane.showMessageDialog(nameAccountTF, "OK");
+                    Main2 main2 = new Main2();
+                    
+                    main2.account = new StudentAccount(e.getName(), e.getUsername(), e.getPassword(), e.getIrn(),
+                            e.getGender(), e.getExpense());
+                    main2.listOfStudentAccount = list;
+                    JOptionPane.showMessageDialog(nameAccountTF, "Welcome!!!");
+                    main2.setVisible(true);
+                    Main.shutdown();
                     return;
                 }
             }
@@ -223,12 +232,12 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         String name = nameAccountTF.getText();
         String username = userNameAccount.getText();
         String password = passwordField.getText();
-        if (name.length() == 0 || username.length() == 0 || password.length() == 0){
+        if (name.length() == 0 || username.length() == 0 || password.length() == 0) {
             JOptionPane.showMessageDialog(nameAccountTF, "Please enter full information!");
             return;
         }
-        
-        ArrayList<StudentAccount> list = (ArrayList<StudentAccount>) StudentAccountDAO.restoreListFromFile("src/account.txt");
+
+        ArrayList<StudentAccount> list = StudentAccountDAO.restoreListFromFile("src/account.txt");
         for (StudentAccount e : list) {
             if (e.getName().equals(name)) {
                 JOptionPane.showMessageDialog(nameAccountTF, "Your username has already exist!");
@@ -236,7 +245,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
                 return;
             }
         }
-        StudentAccount newAccount = new StudentAccount(name, username, password);
+        StudentAccount newAccount = new StudentAccount(name, username, password, "N/a", "N/a", 0.0);
         StudentAccountDAO.saveAccountAsChar(newAccount, "src/account.txt");
         JOptionPane.showMessageDialog(nameAccountTF, "Register successfully!");
         nameAccountTF.setText("");
@@ -258,8 +267,8 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
     private view.swing.MyPasswordField passwordLoginTF;
     private javax.swing.JPanel register;
     private javax.swing.JLabel showPassLabel;
-    private view.swing.Button1 signInButton1;
-    private view.swing.Button1 signUpButton;
+    private view.swing.Button signInButton1;
+    private view.swing.Button signUpButton;
     private javax.swing.JLabel userLabel;
     private view.swing.MyTextField userNameAccount;
     private view.swing.MyTextField userNameAccountLoginTF;
