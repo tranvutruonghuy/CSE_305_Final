@@ -1,5 +1,7 @@
 package model;
 
+import utils.BusService;
+
 public class StudentAccount {
     private String name;
     private String irn;
@@ -62,5 +64,11 @@ public class StudentAccount {
         this.gender = gender;
     }
 
+    public void bookingTickets(int numOfStations, int numOfTickets) {
+        this.setExpense(this.getExpense() + 2 * numOfStations * numOfTickets);
+    }
 
+    public void complainService(String[] complaintString) {
+        BusService.getComplainBoxList().add(complaintString);
+    }
 }
