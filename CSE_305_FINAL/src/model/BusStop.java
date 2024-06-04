@@ -1,14 +1,19 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class BusStop {
     private String busStopName;
     private int busStopNumber;
-    private List<BusStop> adjacentBusStopList; // Use to BFS
-    private Map<Integer, Boolean> associatedRouteMap; // To check whether routes are belongs to the bus stop
-    private Map<Integer, String[]> departureTimeOfEachRoute; // To get departure time about the routes
+    private List<Route> adjacentBusStopList = new ArrayList<>(); // Use to BFS
+    private List<Integer> associatedRouteList = new ArrayList<>(); // List of route
+    private Map<Integer, String[]> departureTimeOfEachRoute = new HashMap<>(); // To get departure time about the routes
+                                                                               // and To check
+    // whether routes are belongs to the bus stop
+    private boolean isVisited;
 
     public BusStop(String busStopName, int busStopNumber) {
         this.busStopName = busStopName;
@@ -31,20 +36,20 @@ public class BusStop {
         this.busStopNumber = busStopNumber;
     }
 
-    public List<BusStop> getAdjacentBusStopList() {
+    public List<Route> getAdjacentBusStopList() {
         return adjacentBusStopList;
     }
 
-    public void setAdjacentBusStopList(List<BusStop> adjacentBusStopList) {
+    public void setAdjacentBusStopList(List<Route> adjacentBusStopList) {
         this.adjacentBusStopList = adjacentBusStopList;
     }
 
-    public Map<Integer, Boolean> getAssociatedRouteMap() {
-        return associatedRouteMap;
+    public List<Integer> getAssociatedRouteList() {
+        return associatedRouteList;
     }
 
-    public void setAssociatedRouteMap(Map<Integer, Boolean> associatedRouteMap) {
-        this.associatedRouteMap = associatedRouteMap;
+    public void setAssociatedRouteList(List<Integer> associatedRouteList) {
+        this.associatedRouteList = associatedRouteList;
     }
 
     public Map<Integer, String[]> getDepartureTimeOfEachRoute() {
@@ -53,6 +58,14 @@ public class BusStop {
 
     public void setDepartureTimeOfEachRoute(Map<Integer, String[]> departureTimeOfEachRoute) {
         this.departureTimeOfEachRoute = departureTimeOfEachRoute;
+    }
+
+    public boolean isVisited() {
+        return isVisited;
+    }
+
+    public void setVisited(boolean isVisited) {
+        this.isVisited = isVisited;
     }
 
 }
