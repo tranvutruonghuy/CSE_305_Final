@@ -1,5 +1,7 @@
 package model;
 
+import utils.DateCheckTool;
+
 public class Date {
     private int day;
     private int month;
@@ -35,4 +37,7 @@ public class Date {
         this.year = year;
     }
 
+    public boolean isWorkingDay() {
+        return DateCheckTool.isWorkingDay(this);
+    }
 }

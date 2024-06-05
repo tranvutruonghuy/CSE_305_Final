@@ -10,7 +10,6 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import javax.swing.ImageIcon;
-import view.swing.Button1;
 
 public class PanelCover extends javax.swing.JPanel {
 
@@ -37,7 +36,7 @@ public class PanelCover extends javax.swing.JPanel {
         twoLabel = new javax.swing.JLabel();
         threeLabel = new javax.swing.JLabel();
         oneLabel1 = new javax.swing.JLabel();
-        changePanelButton = new view.swing.Button1();
+        changePanelButton = new view.swing.Button();
 
         setForeground(new java.awt.Color(0, 102, 102));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,7 +79,7 @@ public class PanelCover extends javax.swing.JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        GradientPaint gra = new GradientPaint(0, 0, Color.decode("#237A57"), 0, getHeight(), Color.decode("#093028"));
+        GradientPaint gra = new GradientPaint(0, 0, Color.decode("#38ef7d"), 0, getHeight(), Color.decode("#11998e"));
         g2.setPaint(gra);
         g2.fillRect(0, 0, getWidth(), getHeight());
         super.paintComponent(g);
@@ -135,7 +134,7 @@ public class PanelCover extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private view.swing.Button1 changePanelButton;
+    private view.swing.Button changePanelButton;
     private javax.swing.JLabel oneLabel;
     private javax.swing.JLabel oneLabel1;
     private javax.swing.JLabel threeLabel;
