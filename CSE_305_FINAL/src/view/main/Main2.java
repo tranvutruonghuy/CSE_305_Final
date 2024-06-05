@@ -16,6 +16,7 @@ import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 import view.components.Menu;
 import view.event.EventMenuSelected;
+import view.form.ChoosingDestinationPanel;
 import view.form.Form1;
 import view.form.Form2;
 import view.model.ModelMenu;
@@ -69,9 +70,11 @@ public class Main2 extends javax.swing.JFrame {
                     f1.setAccount(account);
                     showForm(f1);
                 } else if (index == 1) {
-                    Form2 form2 = new Form2();
-                    form2.setBackground(Color.red);
+                    ChoosingDestinationPanel form2 = new ChoosingDestinationPanel();
                     showForm(form2);
+//                    Form2 form2 = new Form2();
+//                    form2.setBackground(Color.red);
+//                    showForm(form2);
                 }
             }
         });

@@ -15,7 +15,7 @@ public class Bottom extends javax.swing.JPanel {
     public Bottom() {
         initComponents();
         setOpaque(false);
-        logoLabel.setIcon(scaleImage("src/view/images/user.png"));
+        
         setBackground(new Color(0, 102, 0));
     }
 
@@ -28,34 +28,29 @@ public class Bottom extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        logoLabel = new javax.swing.JLabel();
         busEIULabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 102, 102));
 
         busEIULabel.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         busEIULabel.setForeground(new java.awt.Color(255, 255, 255));
-        busEIULabel.setText("NAME");
+        busEIULabel.setText("Logout");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(41, 41, 41)
                 .addComponent(busEIULabel)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(busEIULabel))
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(busEIULabel)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -88,6 +83,5 @@ public class Bottom extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel busEIULabel;
-    private javax.swing.JLabel logoLabel;
     // End of variables declaration//GEN-END:variables
 }
