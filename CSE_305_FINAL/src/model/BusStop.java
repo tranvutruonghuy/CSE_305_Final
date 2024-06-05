@@ -68,4 +68,12 @@ public class BusStop {
         this.isVisited = isVisited;
     }
 
+    public String getTimeByRouteNum(int routeNum) {
+        String[] temp = departureTimeOfEachRoute.get(routeNum);
+        String s = "";
+        for (int i = 0; i < temp.length; i++) {
+            s += temp[i] + "\n";
+        }
+        return s;
+    }
 }

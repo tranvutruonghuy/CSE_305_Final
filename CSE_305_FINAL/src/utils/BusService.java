@@ -15,7 +15,7 @@ public class BusService {
     // 5 boxes: busName, busNum, time, description
     private static List<String[]> complaintBoxList = ComplaintBoxDAO.loadListFromFileChar("ComplaintBox.txt");
     private Map<String, List<BusStop>> availabilityMap;
-    private static List<SpecialEvent> specialEventsList;
+    private static List<SpecialEvent> specialEventList;
 
     public BusService() {
         this.busStopList = new ArrayList<>();
@@ -75,10 +75,10 @@ public class BusService {
         // Available ????????????????????????????????????????????????????
         // Special Event list
         int[] pickupAndDropLocation = { 3, 4 };
-        specialEventsList.add(new SpecialEvent("New Year", new Date(1, 1, 2025), pickupAndDropLocation, 5));
-        specialEventsList.add(new SpecialEvent("Independence Day", new Date(2, 9, 2024), pickupAndDropLocation, 5));
-        specialEventsList.add(new SpecialEvent("Reunification Day", new Date(30, 4, 2025), pickupAndDropLocation, 5));
-        specialEventsList.add(new SpecialEvent("Merry Christmas", new Date(25, 12, 2024), pickupAndDropLocation, 5));
+        specialEventList.add(new SpecialEvent("New Year", new Date(1, 1, 2025), pickupAndDropLocation, 5));
+        specialEventList.add(new SpecialEvent("Independence Day", new Date(2, 9, 2024), pickupAndDropLocation, 5));
+        specialEventList.add(new SpecialEvent("Reunification Day", new Date(30, 4, 2025), pickupAndDropLocation, 5));
+        specialEventList.add(new SpecialEvent("Merry Christmas", new Date(25, 12, 2024), pickupAndDropLocation, 5));
     }
 
     /*
@@ -158,6 +158,12 @@ public class BusService {
      * information whether entire bus service
      * (or a particular route) is available for that day or not
      */
+    public boolean isBusServiceAvailable(Date date) {
+        if (date.isWorkingDay()) {
+            return true;
+        }
+        return false;
+    }
 
     public List<BusStop> getBusStopList() {
         return busStopList;

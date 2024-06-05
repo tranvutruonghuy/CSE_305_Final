@@ -12,11 +12,6 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 import view.components.PanelCover;
 import view.components.PanelLoginAndRegister;
 
-
-/**
- *
- * @author Wunhh
- */
 public class Main extends javax.swing.JFrame {
 
     private MigLayout layout;
@@ -31,15 +26,13 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         init();
-        
+
     }
-    
-    public  static void shutdown(){
+
+    public static void shutdown() {
         main.setVisible(false);
     }
-    
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
@@ -76,9 +69,8 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>
 
-    
     public static void main(String args[]) {
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -102,7 +94,7 @@ public class Main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 main.setVisible(true);
-                //new Main().setVisible(true);
+                // new Main().setVisible(true);
             }
         });
     }
