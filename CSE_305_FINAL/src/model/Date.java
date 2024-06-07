@@ -40,4 +40,10 @@ public class Date {
     public boolean isWorkingDay() {
         return DateCheckTool.isWorkingDay(this);
     }
+
+    @Override
+    public String toString() {
+        return day + "-" + month + "-" + year;
+    }
+
 }

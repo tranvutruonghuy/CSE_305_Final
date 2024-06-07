@@ -5,36 +5,46 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+// 1
 public class AllRoutesFromAToBTableModel extends AbstractTableModel {
-    private String[] columnHeaders = { "From", "To", "Route Number", "Time" };
+    private String[] columnHeaders = { "Total Stations", "Departure Time", "Departure Station", "Transfer Stations",
+            "Destination Station" };
     private List<Object[]> listOfRows = new ArrayList<>();
 
-    public AllRoutesFromAToBTableModel(List<List<BusStop>> allRoute) {
+    public AllRoutesFromAToBTableModel(List<List<BusStop>> getAllRoutesFromAToB) {
+        for (List<BusStop> routeFromAtoB : getAllRoutesFromAToB) {
+            String transferStations = "";
 
+            for (int i = 1; i < routeFromAtoB.size() - 1; i++) {
+                transferStations += routeFromAtoB.get(i).getBusStopName() + "\n";
+            }
+            Object[] row = { routeFromAtoB.size(),
+                    routeFromAtoB.get(0)
+                            .getTimeByRouteNum(routeFromAtoB.get(0).findRouteNumByDestinationBus(routeFromAtoB.get(1))),
+                    routeFromAtoB.get(0).getBusStopName(), transferStations,
+                    routeFromAtoB.get(routeFromAtoB.size() - 1) };
+            listOfRows.add(row);
+        }
     }
 
     @Override
     public int getRowCount() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getRowCount'");
+        return listOfRows.size();
     }
 
     @Override
     public int getColumnCount() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getColumnCount'");
+        return columnHeaders.length;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getValueAt'");
+        return listOfRows.get(rowIndex)[columnIndex];
     }
 
     @Override
     public String getColumnName(int column) {
-        // TODO Auto-generated method stub
-        return super.getColumnName(column);
+        return columnHeaders[column];
     }
 
 }
