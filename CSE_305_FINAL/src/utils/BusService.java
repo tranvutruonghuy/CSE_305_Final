@@ -12,7 +12,7 @@ import model.SpecialEvent;
 
 public class BusService {
     private List<BusStop> busStopList;
-    // 5 boxes: busName, busNum, time, description
+    // 5 boxes: date, busName, busNum, time, description // sua lai complaintBoxDAO
     private static List<String[]> complaintBoxList = ComplaintBoxDAO.loadListFromFileChar("ComplaintBox.txt");
     private Map<String, List<BusStop>> availabilityMap;
     private static List<SpecialEvent> specialEventList;
@@ -74,7 +74,7 @@ public class BusService {
 
         // Available ????????????????????????????????????????????????????
         // Special Event list
-        int[] pickupAndDropLocation = { 3, 4 };
+        BusStop[] pickupAndDropLocation = { busStopList.get(3), busStopList.get(4) };
         specialEventList.add(new SpecialEvent("New Year", new Date(1, 1, 2025), pickupAndDropLocation, 5));
         specialEventList.add(new SpecialEvent("Independence Day", new Date(2, 9, 2024), pickupAndDropLocation, 5));
         specialEventList.add(new SpecialEvent("Reunification Day", new Date(30, 4, 2025), pickupAndDropLocation, 5));

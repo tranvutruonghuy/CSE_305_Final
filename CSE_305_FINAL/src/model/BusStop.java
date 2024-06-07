@@ -72,7 +72,29 @@ public class BusStop {
         String[] temp = departureTimeOfEachRoute.get(routeNum);
         String s = "";
         for (int i = 0; i < temp.length; i++) {
-            s += temp[i] + "\n";
+            s += temp[i] + "          ";
+        }
+        return s;
+    }
+
+    public int findRouteNumByDestinationBus(BusStop bs) {
+        int routeNum = 0;
+        for (Route r : this.adjacentBusStopList) {
+            if (r.getEndBusStop().getBusStopNumber() == bs.getBusStopNumber()) {
+                routeNum = r.getRouteNum();
+                break;
+            }
+        }
+        return routeNum;
+    }
+
+    public String findDestinationNameByRouteNum(int routeNum) {
+        String s = "";
+        for (Route r : this.adjacentBusStopList) {
+            if (r.getRouteNum() == routeNum) {
+                s = r.getEndBusStop().getBusStopName();
+                break;
+            }
         }
         return s;
     }

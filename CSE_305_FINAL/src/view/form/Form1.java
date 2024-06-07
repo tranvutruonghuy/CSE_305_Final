@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+
 import model.StudentAccount;
 import utils.ScaleImages;
 import utils.StudentAccountDAO;
@@ -43,7 +44,8 @@ public class Form1 extends javax.swing.JPanel {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         background = new javax.swing.JPanel();
@@ -113,97 +115,158 @@ public class Form1 extends javax.swing.JPanel {
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
         backgroundLayout.setHorizontalGroup(
-            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(backgroundLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(personalInforLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(backgroundLayout.createSequentialGroup()
-                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(backgroundLayout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nameLabel)
-                                    .addComponent(IRNLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(expenseLabel)
-                                    .addComponent(genderLB, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(backgroundLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(userNameTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(nameTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(IRNTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(expenseTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
-                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(backgroundLayout.createSequentialGroup()
-                                        .addGap(135, 135, 135)
-                                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(refreshLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(backgroundLayout.createSequentialGroup()
-                                        .addGap(88, 88, 88)
-                                        .addComponent(maleButton)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
-                                        .addComponent(femaleButton)))
-                                .addGap(115, 115, 115)))))
-                .addGap(126, 126, 126))
-        );
+                backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
+                                .addGroup(backgroundLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(backgroundLayout.createSequentialGroup()
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(personalInforLabel,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 434,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(backgroundLayout.createSequentialGroup()
+                                                .addGroup(backgroundLayout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(backgroundLayout.createSequentialGroup()
+                                                                .addGap(70, 70, 70)
+                                                                .addGroup(backgroundLayout.createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(nameLabel)
+                                                                        .addComponent(IRNLabel,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                67,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(expenseLabel)
+                                                                        .addComponent(genderLB,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                79,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                backgroundLayout.createSequentialGroup()
+                                                                        .addContainerGap()
+                                                                        .addComponent(usernameLabel,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                79,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(backgroundLayout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(backgroundLayout.createSequentialGroup()
+                                                                .addPreferredGap(
+                                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(backgroundLayout.createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(userNameTF,
+                                                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                Short.MAX_VALUE)
+                                                                        .addComponent(nameTF,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                Short.MAX_VALUE)
+                                                                        .addComponent(IRNTF,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                Short.MAX_VALUE)
+                                                                        .addComponent(expenseTF,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                Short.MAX_VALUE)))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                backgroundLayout.createSequentialGroup()
+                                                                        .addGroup(backgroundLayout.createParallelGroup(
+                                                                                javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                .addGroup(backgroundLayout
+                                                                                        .createSequentialGroup()
+                                                                                        .addGap(135, 135, 135)
+                                                                                        .addComponent(updateButton,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                120,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                        .addPreferredGap(
+                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                Short.MAX_VALUE)
+                                                                                        .addComponent(refreshLabel,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                46,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                .addGroup(backgroundLayout
+                                                                                        .createSequentialGroup()
+                                                                                        .addGap(88, 88, 88)
+                                                                                        .addComponent(maleButton)
+                                                                                        .addPreferredGap(
+                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                                                                156, Short.MAX_VALUE)
+                                                                                        .addComponent(femaleButton)))
+                                                                        .addGap(115, 115, 115)))))
+                                .addGap(126, 126, 126)));
         backgroundLayout.setVerticalGroup(
-            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backgroundLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(personalInforLabel)
-                .addGap(18, 18, 18)
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameLabel))
-                .addGap(18, 18, 18)
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IRNTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IRNLabel))
-                .addGap(18, 18, 18)
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(expenseLabel)
-                    .addComponent(expenseTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(genderLB)
-                    .addComponent(maleButton)
-                    .addComponent(femaleButton))
-                .addGap(27, 27, 27)
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(refreshLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
-        );
+                backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(backgroundLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(personalInforLabel)
+                                .addGap(18, 18, 18)
+                                .addGroup(
+                                        backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(13, 13, 13)
+                                .addGroup(
+                                        backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(userNameTF, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(usernameLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(
+                                        backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(IRNTF, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(IRNLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(
+                                        backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(expenseLabel)
+                                                .addComponent(expenseTF, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(26, 26, 26)
+                                .addGroup(
+                                        backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(genderLB)
+                                                .addComponent(maleButton)
+                                                .addComponent(femaleButton))
+                                .addGap(27, 27, 27)
+                                .addGroup(
+                                        backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(refreshLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(60, Short.MAX_VALUE)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void maleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleButtonActionPerformed
+    private void maleButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_maleButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_maleButtonActionPerformed
+    }// GEN-LAST:event_maleButtonActionPerformed
 
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_updateButtonActionPerformed
         String name = this.account.getName();
         String username = this.account.getName();
         String irn = IRNTF.getText();
@@ -214,26 +277,27 @@ public class Form1 extends javax.swing.JPanel {
         } else if (femaleButton.isSelected()) {
             gender = "female";
         }
-        
-        //check if somethg is null
-        if (irn.length() == 0 || gender.length() == 0|| (!maleButton.isSelected() && !femaleButton.isSelected())){
+
+        // check if somethg is null
+        if (irn.length() == 0 || gender.length() == 0 || (!maleButton.isSelected() && !femaleButton.isSelected())) {
             JOptionPane.showMessageDialog(background, "Some information can't be empty!");
             return;
         }
-        
+
         for (StudentAccount e : listOfStudent) {
             if (e.getName().equals(name) && e.getUsername().equals(username)) {
                 e.setGender(gender);
                 e.setIrn(irn);
                 e.setExpense(expense);
                 StudentAccountDAO.updateFile(listOfStudent, "src/account.txt");
-                JOptionPane.showMessageDialog(background, "Updated successfully!", "Message", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(background, "Updated successfully!", "Message",
+                        JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
         }
-    }//GEN-LAST:event_updateButtonActionPerformed
+    }// GEN-LAST:event_updateButtonActionPerformed
 
-    private void refreshLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshLabelMousePressed
+    private void refreshLabelMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_refreshLabelMousePressed
 
         ArrayList<StudentAccount> list = StudentAccountDAO.restoreListFromFile("src/account.txt");
         for (StudentAccount e : list) {
@@ -243,8 +307,7 @@ public class Form1 extends javax.swing.JPanel {
             }
         }
         init();
-    }//GEN-LAST:event_refreshLabelMousePressed
-
+    }// GEN-LAST:event_refreshLabelMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IRNLabel;

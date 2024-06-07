@@ -1,19 +1,20 @@
 package model;
 
-import utils.BusService;
-
 public class StudentAccount {
     private String name;
-    private String irn;
+    private String irn = "N/a";
     private String username;
     private String password;
-    private double expense;
-    private String gender;
+    private double expense = 0;
+    private String gender = "N/a";
 
-    public StudentAccount(String name, String username, String password) {
+    public StudentAccount(String name, String username, String password, String irn, String gender, double expense) {
         this.name = name;
         this.username = username;
         this.password = password;
+        this.irn = irn;
+        this.gender = gender;
+        this.expense = expense;
     }
 
     public String getName() {
@@ -64,11 +65,4 @@ public class StudentAccount {
         this.gender = gender;
     }
 
-    public void bookingTickets(int numOfStations, int numOfTickets) {
-        this.setExpense(this.getExpense() + 2 * numOfStations * numOfTickets);
-    }
-
-    public void complainService(String[] complaintString) {
-        BusService.getComplainBoxList().add(complaintString);
-    }
 }

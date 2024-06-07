@@ -3,10 +3,10 @@ package model;
 public class SpecialEvent {
     private String name;
     private Date date;
-    private int[] pickupAndDropLocation;
+    private BusStop[] pickupAndDropLocation;
     private int routeNum;
 
-    public SpecialEvent(String name, Date date, int[] pickupAndDropLocation, int routeNum) {
+    public SpecialEvent(String name, Date date, BusStop[] pickupAndDropLocation, int routeNum) {
         this.name = name;
         this.date = date;
         this.pickupAndDropLocation = pickupAndDropLocation;
@@ -29,11 +29,11 @@ public class SpecialEvent {
         this.date = date;
     }
 
-    public int[] getPickupAndDropLocation() {
+    public BusStop[] getPickupAndDropLocation() {
         return pickupAndDropLocation;
     }
 
-    public void setPickupAndDropLocation(int[] pickupAndDropLocation) {
+    public void setPickupAndDropLocation(BusStop[] pickupAndDropLocation) {
         this.pickupAndDropLocation = pickupAndDropLocation;
     }
 

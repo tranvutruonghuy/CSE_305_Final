@@ -1,26 +1,21 @@
 package model;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-//2
-public class RouteNumberInformationTableModel extends AbstractTableModel {
+// 4
+public class BusStopNearByTableModel extends AbstractTableModel {
     private String[] columnHeaders = { "Route Number", "Departure Station", "Destination Station", "Departure Time" };
     private List<Object[]> listOfRows = new ArrayList<>();
 
-    public RouteNumberInformationTableModel(HashMap<Integer, List<BusStop>> hm) {
-        List<Integer> hmKeys = new ArrayList<>(hm.keySet());
-        for (int i = 0; i < hmKeys.size(); i++) {
-            int routeNum = hmKeys.get(i);
-            List<BusStop> list = hm.get(routeNum);
-            for (int j = 0; j < list.size(); j++) {
-                Object[] row = { routeNum, list.get(i).getBusStopName(),
-                        list.get((i + 1) % list.size()).getBusStopName(), list.get(i).getTimeByRouteNum(routeNum) };
-                listOfRows.add(row);
-            }
+    public BusStopNearByTableModel(List<BusStop> busStopNearby, int routeNum) {
+        for (BusStop bs : busStopNearby) {
+            Object[] row = { routeNum, bs.getBusStopName(), bs.findDestinationNameByRouteNum(routeNum),
+                    bs.getTimeByRouteNum(routeNum) };
+            listOfRows.add(row);
         }
-
     }
 
     @Override

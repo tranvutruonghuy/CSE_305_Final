@@ -22,7 +22,6 @@ public class ComplaintBoxDAO {
                 complaintInfor[1] = br.readLine();
                 complaintInfor[2] = br.readLine();
                 complaintInfor[3] = br.readLine();
-                complaintInfor[4] = br.readLine();
                 res.add(complaintInfor);
             }
         } catch (FileNotFoundException e) {
@@ -53,8 +52,6 @@ public class ComplaintBoxDAO {
             bw.newLine();
             bw.write(complaintInfor[3]);
             bw.newLine();
-            bw.write(complaintInfor[4]);
-            bw.newLine();
             bw.flush();
         } catch (Exception e) {
             // TODO: handle exception
@@ -80,8 +77,6 @@ public class ComplaintBoxDAO {
                 bw.write(s[2]);
                 bw.newLine();
                 bw.write(s[3]);
-                bw.newLine();
-                bw.write(s[4]);
                 bw.newLine();
                 bw.flush();
             }
