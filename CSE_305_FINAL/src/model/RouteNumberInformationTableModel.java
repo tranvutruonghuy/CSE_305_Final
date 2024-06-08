@@ -15,8 +15,8 @@ public class RouteNumberInformationTableModel extends AbstractTableModel {
             int routeNum = hmKeys.get(i);
             List<BusStop> list = hm.get(routeNum);
             for (int j = 0; j < list.size(); j++) {
-                Object[] row = { routeNum, list.get(i).getBusStopName(),
-                        list.get((i + 1) % list.size()).getBusStopName(), list.get(i).getTimeByRouteNum(routeNum) };
+                Object[] row = { routeNum, list.get(j).getBusStopName(),
+                        list.get((j + 1) % list.size()).getBusStopName(), list.get(j).getTimeByRouteNum(routeNum) };
                 listOfRows.add(row);
             }
         }

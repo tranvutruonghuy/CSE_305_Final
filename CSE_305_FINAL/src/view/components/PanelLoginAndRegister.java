@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.StudentAccount;
 import utils.StudentAccountDAO;
+import utils.StudentAccountManagement;
 import view.main.Main;
 import view.main.Main2;
 
@@ -239,13 +240,21 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
             return;
         }
 
-        ArrayList<StudentAccount> list = StudentAccountDAO.restoreListFromFile("CSE_305_Final\\CSE_305_FINAL\\src");
-        for (StudentAccount e : list) {
-            if (e.getName().equals(name)) {
-                JOptionPane.showMessageDialog(nameAccountTF, "Your username has already exist!");
-                userNameAccount.setText("");
-                return;
-            }
+        // ArrayList<StudentAccount> list =
+        // StudentAccountDAO.restoreListFromFile("CSE_305_Final\\CSE_305_FINAL\\src");
+
+        // for (StudentAccount e : list) {
+        // if (e.getName().equals(name)) {
+        // JOptionPane.showMessageDialog(nameAccountTF, "Your username has already
+        // exist!");
+        // userNameAccount.setText("");
+        // return;
+        // }
+        // }
+        if (StudentAccountManagement.isAccountExisted(username)) {
+            JOptionPane.showMessageDialog(nameAccountTF, "Your username has already exist!");
+            userNameAccount.setText("");
+            return;
         }
         StudentAccount newAccount = new StudentAccount(name, username, password, "N/a", "N/a", 0.0);
         StudentAccountDAO.saveAccountAsChar(newAccount, "CSE_305_Final\\CSE_305_FINAL\\src");

@@ -17,7 +17,7 @@ public class ComplaintBoxDAO {
             br = new BufferedReader(new FileReader(fileName));
             String line = "";
             while ((line = br.readLine()) != null) {
-                String[] complaintInfor = new String[3];
+                String[] complaintInfor = new String[4];
                 complaintInfor[0] = line;
                 complaintInfor[1] = br.readLine();
                 complaintInfor[2] = br.readLine();
