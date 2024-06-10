@@ -14,6 +14,7 @@
         "CSE_305_FINAL/library/miglayout-4.0.jar",
         "CSE_305_FINAL/library/org-netbeans-modules-java-j2seproject-copylibstask.jar",
         "CSE_305_FINAL/library/promises-4.4.0.jar",
-        "CSE_305_FINAL/library/TimingFramework-0.55.jar"
+        "CSE_305_FINAL/library/TimingFramework-0.55.jar",
+        "CSE_305_FINAL/library/jcalendar-1.4.jar"
     ]
 }
