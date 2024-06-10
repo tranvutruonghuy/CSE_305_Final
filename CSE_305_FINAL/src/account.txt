@@ -1,18 +1,12 @@
-thuy
-thuy
-thuy
-N/a
-N/a
-0.0
-ha
-ha
-ha
-N/a
-N/a
-0.0
 huy
 huy
 huy
-2131200079
+1234567
 male
-0.0
+14.0
+Tran Vu Truong Huy
+truonghuy
+huy123
+N/a
+N/a
+8.0

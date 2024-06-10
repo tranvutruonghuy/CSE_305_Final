@@ -3,6 +3,7 @@ package model;
 import utils.DateCheckTool;
 
 public class Date {
+
     private int day;
     private int month;
     private int year;
@@ -43,7 +44,8 @@ public class Date {
 
     @Override
     public String toString() {
-        return day + "-" + month + "-" + year;
+        return this.day + "-" + this.month+"-"+this.year;
+                
     }
 
 }

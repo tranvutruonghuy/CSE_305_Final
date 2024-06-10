@@ -211,6 +211,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Female"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="femaleButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="view.swing.Button" name="updateButton">
           <Properties>

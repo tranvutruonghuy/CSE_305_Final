@@ -19,7 +19,7 @@ public class AssociatedRouteOfABusSop extends AbstractTableModel {
         }
         for (int i = 1; i < associatedRoutesByBusNumber.size(); i++) {
             int routeNum = associatedRoutesByBusNumber.get(i)
-                    .findRouteNumByDestinationBus(associatedRoutesByBusNumber.get(0));
+                    .findRouteNumByDestinationBusNum(associatedRoutesByBusNumber.get(0).getBusStopNumber());
             Object[] row = { routeNum, associatedRoutesByBusNumber.get(i).getBusStopName(),
                     associatedRoutesByBusNumber.get(0).getBusStopName(),
                     associatedRoutesByBusNumber.get(i).getTimeByRouteNum(routeNum) };

@@ -5,7 +5,12 @@
 package view.form;
 
 import java.awt.Image;
+import java.util.HashMap;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import model.BusStop;
+import utils.BusService;
 
 /**
  *
@@ -13,13 +18,13 @@ import javax.swing.ImageIcon;
  */
 public class ChoosingDestinationPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ChoosingDestinationPanel
-     */
+    private BusService busService = new BusService();
+
     public ChoosingDestinationPanel() {
         initComponents();
+        images();
     }
-    
+
     private ImageIcon scaleImage(String path) {
         ImageIcon icon = new ImageIcon(path);
         Image img = icon.getImage();
@@ -27,9 +32,9 @@ public class ChoosingDestinationPanel extends javax.swing.JPanel {
         ImageIcon scaledIcon = new ImageIcon(imgScale);
         return scaledIcon;
     }
-    
+
     private void images() {
-       repeatLabel.setIcon(scaleImage("src/view/images/repeat.png"));
+        arrowLabel.setIcon(scaleImage("src/view/images/rightarrow.png"));
     }
 
     /**
@@ -44,14 +49,19 @@ public class ChoosingDestinationPanel extends javax.swing.JPanel {
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         jComboBox1 = new javax.swing.JComboBox<>();
         currentPositionComboBox = new javax.swing.JComboBox<>();
         destinationCombobox = new javax.swing.JComboBox<>();
-        repeatLabel = new javax.swing.JLabel();
+        arrowLabel = new javax.swing.JLabel();
+        depatureLabel = new javax.swing.JLabel();
+        destinationLabel = new javax.swing.JLabel();
+        dateChooser = new com.toedter.calendar.JDateChooser();
+        checkDayLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        searchButton = new javax.swing.JButton();
+        searchButton = new view.swing.Button();
+        checkButton = new javax.swing.JButton();
+        showResultLabel = new javax.swing.JLabel();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -67,7 +77,7 @@ public class ChoosingDestinationPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         currentPositionComboBox.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        currentPositionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Domitory", "Library", "University", "Airport", "Sports Center" }));
+        currentPositionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dormitory", "Library", "University", "Airport", "Sport Community" }));
         currentPositionComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 currentPositionComboBoxActionPerformed(evt);
@@ -75,33 +85,47 @@ public class ChoosingDestinationPanel extends javax.swing.JPanel {
         });
 
         destinationCombobox.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        destinationCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Domitory", "Library", "University", "Airport", "Sports Center" }));
+        destinationCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dormitory", "Library", "University", "Airport", "Sport Community" }));
         destinationCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 destinationComboboxActionPerformed(evt);
             }
         });
 
-        repeatLabel.setText("jLabel1");
+        depatureLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        depatureLabel.setForeground(new java.awt.Color(0, 102, 102));
+        depatureLabel.setText("Departure");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        destinationLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        destinationLabel.setForeground(new java.awt.Color(0, 102, 102));
+        destinationLabel.setText("Destination");
+
+        dateChooser.setDateFormatString("dd-MM-yyyy");
+        dateChooser.setFocusCycleRoot(true);
+        dateChooser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
+        checkDayLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        checkDayLabel.setForeground(new java.awt.Color(0, 102, 102));
+        checkDayLabel.setText("Check working day");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel1.setText("Departure");
+        jLabel1.setText("Where will you go today?");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel2.setText("Destination");
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel3.setText("Calendar");
-
-        searchButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        searchButton.setBackground(new java.awt.Color(0, 102, 102));
+        searchButton.setForeground(new java.awt.Color(255, 255, 255));
         searchButton.setText("Search");
-        searchButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        searchButton.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
+            }
+        });
+
+        checkButton.setText("Check");
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
             }
         });
 
@@ -110,43 +134,61 @@ public class ChoosingDestinationPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(currentPositionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(repeatLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(destinationCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(79, 79, 79)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(depatureLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(currentPositionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(arrowLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(destinationCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(destinationLabel)
+                            .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkDayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(showResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(52, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(checkButton)
+                .addGap(155, 155, 155))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel3)))
+                        .addComponent(depatureLabel)
+                        .addComponent(destinationLabel))
+                    .addComponent(checkDayLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(destinationCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(repeatLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(currentPositionComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addGap(70, 70, 70)
-                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(143, 143, 143))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateChooser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(destinationCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(arrowLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                        .addComponent(currentPositionComboBox)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(showResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkButton)
+                .addGap(18, 18, 18)
+                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -159,21 +201,49 @@ public class ChoosingDestinationPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_destinationComboboxActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
+        BusStop from = null;
+        BusStop to = null;
+        String fromString = currentPositionComboBox.getSelectedItem().toString();
+        String toString = destinationCombobox.getSelectedItem().toString();
+        if (fromString.equals(toString)) {
+            JOptionPane.showMessageDialog(dateChooser, "Your bus stop and destination are the same!");
+        } else {
+            from = busService.getBusStopByName(fromString);
+            to = busService.getBusStopByName(toString);
+            ShowDetailBusTable table = new ShowDetailBusTable();
+            
+            table.createTable(from, to);
+            table.setVisible(true);
+        }
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
+        int day = dateChooser.getDate().getDay();
+        if (day == 6 || day == 0) {
+            showResultLabel.setText("We don't have any buses this day");
+        } else {
+            showResultLabel.setText("The date is valid");
+
+        }
+    }//GEN-LAST:event_checkButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel arrowLabel;
+    private javax.swing.JButton checkButton;
+    private javax.swing.JLabel checkDayLabel;
     private javax.swing.JComboBox<String> currentPositionComboBox;
+    private com.toedter.calendar.JDateChooser dateChooser;
+    private javax.swing.JLabel depatureLabel;
     private javax.swing.JComboBox<String> destinationCombobox;
+    private javax.swing.JLabel destinationLabel;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel repeatLabel;
-    private javax.swing.JButton searchButton;
+    private view.swing.Button searchButton;
+    private javax.swing.JLabel showResultLabel;
     // End of variables declaration//GEN-END:variables
 }

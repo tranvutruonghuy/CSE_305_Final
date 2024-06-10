@@ -35,7 +35,7 @@ public class Main extends javax.swing.JFrame {
     }
     
     public  static void shutdown(){
-        main.setVisible(false);
+        main.dispose();
     }
     
     
@@ -109,7 +109,7 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify
     private static javax.swing.JLayeredPane bg;
-    private static Main main = new Main();
+    private static final Main main = new Main();
     // End of variables declaration
 
     private void init() {

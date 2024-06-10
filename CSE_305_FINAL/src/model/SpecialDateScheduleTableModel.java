@@ -11,6 +11,7 @@ public class SpecialDateScheduleTableModel extends AbstractTableModel {
 
     public SpecialDateScheduleTableModel(List<SpecialEvent> specialEventList) {
         for (SpecialEvent e : specialEventList) {
+            
             Object[] row = { e.getName(), e.getDate().toString(), e.getPickupAndDropLocation()[0].getBusStopName(),
                     e.getPickupAndDropLocation()[1].getBusStopName(), e.getRouteNum() };
             listOfRows.add(row);

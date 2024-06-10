@@ -77,10 +77,10 @@ public class BusStop {
         return s;
     }
 
-    public int findRouteNumByDestinationBus(BusStop bs) {
+    public int findRouteNumByDestinationBusNum(int busStopNum) {
         int routeNum = 0;
         for (Route r : this.adjacentBusStopList) {
-            if (r.getEndBusStop().getBusStopNumber() == bs.getBusStopNumber()) {
+            if (r.getEndBusStop().getBusStopNumber() == busStopNum) {
                 routeNum = r.getRouteNum();
                 break;
             }

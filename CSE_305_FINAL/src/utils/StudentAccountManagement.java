@@ -8,7 +8,7 @@ import utils.StudentAccountDAO;
 
 public class StudentAccountManagement {
     private static List<StudentAccount> studentAccountList = StudentAccountDAO
-            .restoreListFromFile("CSE_305_Final\\CSE_305_FINAL\\src");
+            .restoreListFromFile("src/account.txt");
 
     // public static int findIndexOfLoginAccount(String username, String password) {
     // return HandleLoginAndSignUpTool.findIndexOfLoginAccount(username, password,

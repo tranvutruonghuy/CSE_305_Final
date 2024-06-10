@@ -17,11 +17,10 @@ public class ComplaintBoxDAO {
             br = new BufferedReader(new FileReader(fileName));
             String line = "";
             while ((line = br.readLine()) != null) {
-                String[] complaintInfor = new String[4];
+                String[] complaintInfor = new String[3];
                 complaintInfor[0] = line;
                 complaintInfor[1] = br.readLine();
                 complaintInfor[2] = br.readLine();
-                complaintInfor[3] = br.readLine();
                 res.add(complaintInfor);
             }
         } catch (FileNotFoundException e) {
@@ -50,8 +49,6 @@ public class ComplaintBoxDAO {
             bw.newLine();
             bw.write(complaintInfor[2]);
             bw.newLine();
-            bw.write(complaintInfor[3]);
-            bw.newLine();
             bw.flush();
         } catch (Exception e) {
             // TODO: handle exception
@@ -75,8 +72,6 @@ public class ComplaintBoxDAO {
                 bw.write(s[1]);
                 bw.newLine();
                 bw.write(s[2]);
-                bw.newLine();
-                bw.write(s[3]);
                 bw.newLine();
                 bw.flush();
             }

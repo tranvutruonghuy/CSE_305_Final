@@ -16,13 +16,13 @@ public class AllRoutesFromAToBTableModel extends AbstractTableModel {
             String transferStations = "";
 
             for (int i = 1; i < routeFromAtoB.size() - 1; i++) {
-                transferStations += routeFromAtoB.get(i).getBusStopName() + "\n";
+                transferStations += routeFromAtoB.get(i).getBusStopName() + "  ";       
             }
             Object[] row = { routeFromAtoB.size(),
                     routeFromAtoB.get(0)
-                            .getTimeByRouteNum(routeFromAtoB.get(0).findRouteNumByDestinationBus(routeFromAtoB.get(1))),
+                            .getTimeByRouteNum(routeFromAtoB.get(0).findRouteNumByDestinationBusNum(routeFromAtoB.get(1).getBusStopNumber())),
                     routeFromAtoB.get(0).getBusStopName(), transferStations,
-                    routeFromAtoB.get(routeFromAtoB.size() - 1) };
+                    routeFromAtoB.get(routeFromAtoB.size() - 1).getBusStopName() };
             listOfRows.add(row);
         }
     }

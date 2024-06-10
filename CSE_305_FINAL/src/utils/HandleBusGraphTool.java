@@ -27,6 +27,6 @@ public class HandleBusGraphTool {
             }
         }
         a.setVisited(false);
-        route.removeLast();
+        route.remove(route.size()-1);
     }
 }

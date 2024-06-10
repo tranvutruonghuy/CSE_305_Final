@@ -11,11 +11,12 @@ import model.Route;
 import model.SpecialEvent;
 
 public class BusService {
-    private List<BusStop> busStopList;
+
+    private static List<BusStop> busStopList;
     // 5 boxes: date, busName, busNum, time, description // sua lai complaintBoxDAO
-    private static List<String[]> complaintBoxList = ComplaintBoxDAO.loadListFromFileChar("ComplaintBox.txt");
+    private static List<String[]> complaintBoxList = ComplaintBoxDAO.loadListFromFileChar("src/complain.txt");
     private Map<String, List<BusStop>> availabilityMap;
-    private static List<SpecialEvent> specialEventList;
+    //private static List<SpecialEvent> specialEventList = new ArrayList<>();
 
     public BusService() {
         this.busStopList = new ArrayList<>();
@@ -49,36 +50,28 @@ public class BusService {
         this.getBusStopList().get(4).getAssociatedRouteList().add(5);
 
         // Add departure time
-        String[] s1 = { "8:30", "14:30" };
+        String[] s1 = {"8:30", "14:30"};
         this.getBusStopList().get(0).getDepartureTimeOfEachRoute().put(1, s1);
-        String[] s2 = { "11:30", "16:30" };
+        String[] s2 = {"11:30", "16:30"};
         this.getBusStopList().get(0).getDepartureTimeOfEachRoute().put(4, s2);
 
-        String[] s3 = { "11:20", "16:20" };
+        String[] s3 = {"11:20", "16:20"};
         this.getBusStopList().get(1).getDepartureTimeOfEachRoute().put(1, s3);
-        String[] s4 = { "17:00" };
+        String[] s4 = {"17:00"};
         this.getBusStopList().get(1).getDepartureTimeOfEachRoute().put(2, s4);
 
-        String[] s5 = { "18:30" };
+        String[] s5 = {"18:30"};
         this.getBusStopList().get(2).getDepartureTimeOfEachRoute().put(3, s5);
 
-        String[] s6 = { "7:00", "12:00" };
+        String[] s6 = {"7:00", "12:00"};
         this.getBusStopList().get(3).getDepartureTimeOfEachRoute().put(4, s6);
-        String[] s7 = { "17:00" };
+        String[] s7 = {"17:00"};
         this.getBusStopList().get(3).getDepartureTimeOfEachRoute().put(3, s7);
-        String[] s8 = { "8:30", "16:30" };
+        String[] s8 = {"8:30", "16:30"};
         this.getBusStopList().get(3).getDepartureTimeOfEachRoute().put(5, s8);
 
-        String[] s9 = { "10:00", "15:30" };
+        String[] s9 = {"10:00", "15:30"};
         this.getBusStopList().get(4).getDepartureTimeOfEachRoute().put(5, s9);
-
-        // Available ????????????????????????????????????????????????????
-        // Special Event list
-        BusStop[] pickupAndDropLocation = { busStopList.get(3), busStopList.get(4) };
-        specialEventList.add(new SpecialEvent("New Year", new Date(1, 1, 2025), pickupAndDropLocation, 5));
-        specialEventList.add(new SpecialEvent("Independence Day", new Date(2, 9, 2024), pickupAndDropLocation, 5));
-        specialEventList.add(new SpecialEvent("Reunification Day", new Date(30, 4, 2025), pickupAndDropLocation, 5));
-        specialEventList.add(new SpecialEvent("Merry Christmas", new Date(25, 12, 2024), pickupAndDropLocation, 5));
     }
 
     /*
@@ -89,11 +82,20 @@ public class BusService {
      * and end location as place A. It will show you the bus availability
      * nhập vô đầu đuôi xuất ra lộ trình
      */
-    public List<List<BusStop>> getAllRoutesFromAToB(BusStop a, BusStop b) {
+    public static List<List<BusStop>> getAllRoutesFromAToB(BusStop a, BusStop b) {
         List<List<BusStop>> allRoutes = new ArrayList<>();
         HandleBusGraphTool.dfs(a, b, allRoutes, new ArrayList<>());
         HandleBusGraphTool.resetVisitStatus(busStopList);
         return allRoutes;
+    }
+
+    public BusStop getBusStopByName(String name) {
+        for (BusStop e : busStopList) {
+            if (e.getBusStopName().equals(name)) {
+                return e;
+            }
+        }
+        return null;
     }
 
     /*
@@ -143,9 +145,9 @@ public class BusService {
      * names associated with the route.
      * nhập vô tuyến đường show ra 2 trạm ở 2 đầu
      */
-    public List<BusStop> getBusStopNearby(int routeNumber) {
+    public static List<BusStop> getBusStopNearby(int routeNumber) {
         List<BusStop> list = new ArrayList<>();
-        for (BusStop bs : this.busStopList) {
+        for (BusStop bs : busStopList) {
             if (bs.getAssociatedRouteList().contains(routeNumber)) {
                 list.add(bs);
             }
@@ -165,7 +167,7 @@ public class BusService {
         return false;
     }
 
-    public List<BusStop> getBusStopList() {
+    public static List<BusStop> getBusStopList() {
         return busStopList;
     }
 
@@ -174,7 +176,7 @@ public class BusService {
     }
 
     public static List<String[]> getComplainBoxList() {
-        return complaintBoxList;
+        return ComplaintBoxDAO.loadListFromFileChar("src/complain.txt");
     }
 
     public static void setComplainBoxList(List<String[]> complaintBoxList) {
@@ -187,6 +189,16 @@ public class BusService {
 
     public void setAvailabilityMap(Map<String, List<BusStop>> availabilityMap) {
         this.availabilityMap = availabilityMap;
+    }
+
+    public static List<SpecialEvent> getSpecialEventList() {
+        List<SpecialEvent> specialEventList = new ArrayList<>();
+        BusStop[] pickupAndDropLocation = {busStopList.get(3), busStopList.get(4)};
+        specialEventList.add(new SpecialEvent("New Year", new Date(1, 1, 2025), pickupAndDropLocation, 5));
+        specialEventList.add(new SpecialEvent("Independence Day", new Date(2, 9, 2024), pickupAndDropLocation, 5));
+        specialEventList.add(new SpecialEvent("Reunification Day", new Date(30, 4, 2025), pickupAndDropLocation, 5));
+        specialEventList.add(new SpecialEvent("Merry Christmas", new Date(25, 12, 2024), pickupAndDropLocation, 5));
+        return specialEventList;
     }
 
 }

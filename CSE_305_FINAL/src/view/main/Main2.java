@@ -1,7 +1,6 @@
 package view.main;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -9,20 +8,30 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import model.SpecialDateScheduleTableModel;
 import model.StudentAccount;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
+import utils.BusService;
+import view.form.ComplainPanel;
 import view.components.Menu;
 import view.event.EventMenuSelected;
+
+import view.form.ChooseBusByRoute;
+import view.form.ChooseBusByNumber;
 import view.form.ChoosingDestinationPanel;
+
+import view.form.ComplaintBoxTable;
 import view.form.Form1;
 import view.form.Form2;
+import view.form.SpecialDayForm;
+import view.form.WelcomeForm;
 import view.model.ModelMenu;
 
 public class Main2 extends javax.swing.JFrame {
-
+    
     private Menu menu = new Menu();
     private JPanel main2 = new JPanel();
     private MigLayout layout;
@@ -31,17 +40,21 @@ public class Main2 extends javax.swing.JFrame {
     private EventMenuSelected event;
     public static StudentAccount account;
     public static List<StudentAccount> listOfStudentAccount;
-
+    public static BusService busService;
+    
     public Main2() {
         initComponents();
+        this.setTitle("Bus application");
         init();
+        
     }
-
+    
     public void setListOfStudentAccount(List<StudentAccount> listOfStudentAccount) {
         this.listOfStudentAccount = listOfStudentAccount;
     }
-
+    
     private void init() {
+        busService = new BusService();
         layout = new MigLayout("fill", "0[]10[]0", "0[fill]0");
         body.setLayout(layout);
         main2.setOpaque(false);
@@ -65,25 +78,47 @@ public class Main2 extends javax.swing.JFrame {
         menu.setEvent(new EventMenuSelected() {
             @Override
             public void selected(int index) {
-                if (index == 0) {
-                    Form1 f1 = new Form1();
-                    f1.setAccount(account);
-                    showForm(f1);
-                } else if (index == 1) {
-                    ChoosingDestinationPanel form2 = new ChoosingDestinationPanel();
-                    showForm(form2);
-//                    Form2 form2 = new Form2();
-//                    form2.setBackground(Color.red);
-//                    showForm(form2);
+                switch (index) {
+                    case 0 -> {
+                        Form1 f1 = new Form1();
+                        f1.setAccount(account);
+                        showForm(f1);
+                    }
+                    case 1 ->
+                        showForm(new ChoosingDestinationPanel());
+                    case 2 ->
+                        showForm(new Form2());
+                    case 3 ->
+                        showForm(new ChooseBusByNumber());
+                    case 4 ->
+                        showForm(new ChooseBusByRoute());
+                    
+                    case 5 -> {
+                        SpecialDayForm form = new SpecialDayForm();
+                                             
+                        showForm(form);
+                    }
+                    
+                    case 6 -> {
+                        ComplainPanel form = new ComplainPanel();
+                        showForm(form);
+                    }
+                    default -> {
+                    }
                 }
             }
         });
         menu.addMenu(new ModelMenu("Profile", scaleImage("src/view/images/user.png")));
-        menu.addMenu(new ModelMenu("bin", scaleImage("src/view/images/show.png")));
-
+        menu.addMenu(new ModelMenu("Find bus", scaleImage("src/view/images/findbus.png")));
+        menu.addMenu(new ModelMenu("Bus route", scaleImage("src/view/images/route.png")));
+        menu.addMenu(new ModelMenu("Find bus by number", scaleImage("src/view/images/find.png")));
+        menu.addMenu(new ModelMenu("Find bus by bustop", scaleImage("src/view/images/findbustop.png")));
+        menu.addMenu(new ModelMenu("Special day", scaleImage("src/view/images/date.png")));
+        menu.addMenu(new ModelMenu("Help", scaleImage("src/view/images/customersupport.png")));
+        
         body.add(menu, "w 50!");
         body.add(main2, "w 100%");
-
+        
         TimingTarget target = new TimingTargetAdapter() {
             @Override
             public void timingEvent(float fraction) {
@@ -98,21 +133,20 @@ public class Main2 extends javax.swing.JFrame {
                 layout.setComponentConstraints(menu, "w " + width + "!");
                 body.revalidate();
             }
-
+            
             @Override
             public void end() {
                 menuShow = !menuShow;
             }
-
+            
         };
         animator = new Animator(400, target);
         animator.setResolution(0);
         animator.setAcceleration(0.5f);
         animator.setDeceleration(0.5f);
-        //Form1 form1 = new Form1();
-        showForm(new Form2());
+        showForm(new WelcomeForm());
     }
-
+    
     private ImageIcon scaleImage(String path) {
         ImageIcon icon = new ImageIcon(path);
         Image img = icon.getImage();
@@ -120,18 +154,18 @@ public class Main2 extends javax.swing.JFrame {
         ImageIcon scaledIcon = new ImageIcon(imgScale);
         return scaledIcon;
     }
-
+    
     private void shutdown() {
-        this.setVisible(false);
+        this.dispose();
     }
-
+    
     private void showForm(Component com) {
         main2.removeAll();
         main2.add(com);
         main2.repaint();
         main2.revalidate();
     }
-
+    
     public void setEvent(EventMenuSelected event) {
         this.event = event;
     }
